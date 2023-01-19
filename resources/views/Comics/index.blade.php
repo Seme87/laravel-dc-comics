@@ -22,8 +22,10 @@
                 @foreach ($comics as $comic)
                     <tr>
                         <td>{{$comic->id}}</td>
+                        <td>{{$comic->title}}</td>
+                        <td>{{$comic->series}}</td>
                         <td>{{$comic->price}}</td>
-                        <td>{{$comic->sales_date}}</td>
+                        <td>{{$comic->sale_date}}</td>
                         <td>{{$comic->type}}</td>
                         <td>...</td>
                     </tr>
