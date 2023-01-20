@@ -44,12 +44,12 @@ class ComicController extends Controller
         $new_comic = new Comic();
 
         //compilo l'oggetto(o meglio le sue proprieta)
-        $new_comic->tile = $data['title'];
-        $new_comic->tile = $data['description'];
-        $new_comic->tile = $data['price'];
-        $new_comic->tile = $data['series'];
-        $new_comic->tile = $data['sale_date'];
-        $new_comic->tile = $data['type'];
+        $new_comic->title = $data['title'];
+        $new_comic->description = $data['description'];
+        $new_comic->price= $data['price'];
+        $new_comic->series = $data['series'];
+        $new_comic->sale_date = $data['sale_date'];
+        $new_comic->type = $data['type'];
 
         //salvo (creo a db la riga)
         $new_comic->save();
