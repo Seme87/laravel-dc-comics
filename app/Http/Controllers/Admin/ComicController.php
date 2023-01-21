@@ -44,13 +44,18 @@ class ComicController extends Controller
         $new_comic = new Comic();
 
         //compilo l'oggetto(o meglio le sue proprieta)
-        $new_comic->title = $data['title'];
-        $new_comic->description = $data['description'];
-        $new_comic->price= $data['price'];
-        $new_comic->series = $data['series'];
-        $new_comic->sale_date = $data['sale_date'];
-        $new_comic->type = $data['type'];
+        // $new_comic->title = $data['title'];
+        // $new_comic->description = $data['description'];
+        // $new_comic->price= $data['price'];
+        // $new_comic->series = $data['series'];
+        // $new_comic->sale_date = $data['sale_date'];
+        // $new_comic->type = $data['type'];
 
+
+        // Mass assignement
+        $new_comic->fill($data);
+
+        
         //salvo (creo a db la riga)
         $new_comic->save();
 
@@ -75,9 +80,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -87,9 +92,16 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        // recupero tutti i dati del form
+        $data = $request->all();
+
+        //aggiorno la risorsa per intero
+        $comic->update($data);
+
+        //faccio un redirect alla pagina principale(index)
+        return redirect()->route('comics.index', $comic->id);
     }
 
     /**
