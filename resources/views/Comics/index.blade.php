@@ -30,7 +30,7 @@
                         <td>
                             <a href="{{ route('comics.show', $comic->id ) }}" class="btn btn-primary">Vedi</a>
                             <a href="{{ route('comics.edit', $comic->id ) }}" class="btn btn-warning">Modifica</a>
-                            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                            <form class="d-inline-block" action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Cancella</button>     
@@ -38,7 +38,7 @@
                         </td>
                     </tr>
                 @endforeach
-        
+         
             </tbody>
 
             
